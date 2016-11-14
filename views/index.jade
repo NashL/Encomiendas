@@ -1,0 +1,22 @@
+doctype html
+html
+	head
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='/stylesheets/index.css')
+		script(src='/javascripts/jquery-3.1.1.min.js')
+		script(src='/javascripts/main.js')
+	body
+		.container
+			form#formAddUser.form-signin(name="checkLoginUser",method="post",action="/rest/checkLoginUser")
+				h2.form-signin-heading Iniciar Sesión
+				label.sr-only(for='inputUsername') Nombre de Usuario
+				input#inputUsername.form-control(type='text', name="username" , placeholder='Nombre de Usuario', required='', autofocus='')
+				label.sr-only(for='inputPassword') Contraseña
+				input#inputPassword.form-control(type='password', name="password", placeholder='Contraseña', required='')
+				.checkbox
+					label
+						input(type='checkbox', value='remember-me')
+						| Recordarme
+				button.btn.btn-lg.btn-primary.btn-block(type='submit',onclick='signin()') Iniciar Sesión

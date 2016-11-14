@@ -1,0 +1,42 @@
+doctype html
+html
+	head
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='/stylesheets/index.css')
+		script(src='/javascripts/jquery-3.1.1.min.js')
+		script(src='/javascripts/main.js')
+	body
+		.container
+			.row
+				.col-sm-3
+					.sidebar-nav
+						.navbar.navbar-default(role='navigation')
+							.navbar-header
+								button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+									span.sr-only Toggle navigation
+									|             
+									span.icon-bar
+									|             
+									span.icon-bar
+									|             
+									span.icon-bar
+								|           
+								span.visible-xs.navbar-brand Sidebar menu
+							|         
+							.navbar-collapse.collapse.sidebar-navbar-collapse
+								ul.nav.navbar-nav
+									li.active
+										a(href='/#') Bienvenida
+									|             
+									li
+										a(href='/presupuestos') Presupuestos
+									|             
+									li
+										a(href='#') Menu Item 3
+									|             
+									li
+										a(href='#') Menu Item 4
+									|             
+				.col-sm-9

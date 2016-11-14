@@ -1,0 +1,36 @@
+extends layout
+
+block content
+		.container
+			.row
+				.col-sm-3
+					.sidebar-nav
+						.navbar.navbar-default(role='navigation')
+							.navbar-header
+								button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+									span.sr-only Toggle navigation
+									|             
+									span.icon-bar
+									|             
+									span.icon-bar
+									|             
+									span.icon-bar
+								|           
+								span.visible-xs.navbar-brand Sidebar menu
+							|         
+							.navbar-collapse.collapse.sidebar-navbar-collapse
+								ul.nav.navbar-nav
+									li.active
+										a(href='/welcome') Bienvenido
+									|             
+									li
+										a(href='/presupuestos') Presupuestos
+									|             
+				.col-sm-9
+					h1.
+						Lista de Presupuestos
+					ul
+						each presupuesto, i in listapresupuesto
+							li
+								a(href="mailto:#{presupuesto.id}")= presupuesto.descripcion
+
