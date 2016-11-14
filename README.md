@@ -24,5 +24,5 @@ Para una instalacion mas detallada [Ver Aqui](https://www.digitalocean.com/commu
 #!bash
 usuario: postgres
 contraseña: postgres
-base de datos : encomiendas
+nombre de la base de datos: encomiendas
 ```
