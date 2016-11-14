@@ -1,4 +1,4 @@
-# README #
+# LEEME #
 
 ## Instalacion ##
 Instalar primero lo necesario:
@@ -19,8 +19,10 @@ npm install express-generator
 
 Para una instalacion mas detallada [Ver Aqui](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-an-ubuntu-14-04-server)
 
-*### Base de Datos ###
-Postgres: 
-* usuario: postgres
-* contraseña: postgres
-* base de datos : encomiendas
+## Base de Datos (Postgres)##
+```
+#!bash
+usuario: postgres
+contraseña: postgres
+base de datos : encomiendas
+```
