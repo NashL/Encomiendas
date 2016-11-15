@@ -1,9 +1,12 @@
 # LEEME #
 
 ## Instalacion ##
-Instalar primero lo necesario:
 
-*Instalamos node.js y npm
+*Instalamos node.js y npm(Windows)
+[Descargar aqui](https://nodejs.org/en/)
+
+
+*Instalamos node.js y npm(Linux)
 ```
 #!linux
 sudo apt-get update
