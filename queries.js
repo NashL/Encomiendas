@@ -14,12 +14,7 @@ var db = pgp(connectionString);
 // add query functions
 
 module.exports = {
-//  getAllPuppies: getAllPuppies,
-//  getSinglePuppy: getSinglePuppy,
-//  createPuppy: createPuppy,
-//  updatePuppy: updatePuppy,
-//  removePuppy: removePuppy,
-  getAllUsers: getAllUsers,
+  	getAllUsers: getAllUsers,
 	checkLoginUser: checkLoginUser,
 	welcome: welcomePage,
 	presupuestos: presupuestos
@@ -42,30 +37,15 @@ function getAllUsers(req, res, next) {
 }
 
 function checkLoginUser(req, res, next) {
-  //db.none('insert into pups(name, breed, age, sex)' +      'values(${name}, ${breed}, ${age}, ${sex})',req.body)
-//		db.func('checkLoginUser', ['oluza','12345678'])
-		/*var doc = {
-			usuario: "oluza",
-			password: "12345678"
-		}*/
-		db.one('SELECT * FROM checkLoginUser(${username}, ${password})', req.body/*, doc*/)
-//		db.func('checkLoginUser', ['oluza','12345678'])
+		db.one('SELECT * FROM checkLoginUser(${username}, ${password})', req.body)
     .then(function (data) {
 		usernameGlobal = data['nombre_usuario'];
 			res.redirect("/welcome");
 			console.log(data);
-/*      res.status(200)
-        .json({
-          status: 'success',
-          message: 'Valid Login Dates'
-        });*/
-
     })
     .catch(function (err) {
 			console.log(err);
 		  res.redirect('/');
-
-/*      return next(err);*/
     });
 }
 
@@ -78,7 +58,6 @@ function welcomePage(req, res, next){
 }
 
 function presupuestos(req, res, next){
-
 	db.func('presupuestos_por_nombre_usuario', usernameGlobal)
 	.then(function (data) {
 		      res.render("presupuesto",{
