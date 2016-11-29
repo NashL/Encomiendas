@@ -1,0 +1,26 @@
+extends layout
+
+block content
+            .col-sm-9
+                h1.
+                    Creacion de Entrega
+                h2=message
+                form.form-horizontal(name="createDelivery",method="post",action="/rest/saveDelivery")
+                    .form-group
+                        label.control-label.col-sm-2(for='id_presupuesto') #ID Presupuesto:
+                        .col-sm-10
+                            select#id_presupuesto.selectpicker(data-live-search='true', name='id_presupuesto', title="Elija un Presupuesto")
+                                each presupuesto, i in listaPresupuestos
+                                    option(data-subtext="#{presupuesto.descripcion}",value="#{presupuesto.id}") #{presupuesto.id}
+
+                    .form-group
+                        label.control-label.col-sm-2(for='id_cliente') Cliente:
+                        .col-sm-10
+                            select#id_cliente.selectpicker(data-live-search='true', name='id_cliente', title="Escoja un cliente")
+                                each cliente, i in listaClientes
+                                    option(data-subtext="#{cliente.id}",value="#{cliente.id}") #{cliente.nombres}
+                    .form-group
+                        .col-sm-offset-2.col-sm-3
+                            button.btn.btn-primary.btn-block(type='submit') Crear Entrega
+                            a.btn.btn-danger(href='/entregas', role='button') Cancelar
+

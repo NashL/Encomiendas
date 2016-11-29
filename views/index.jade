@@ -3,14 +3,15 @@ html
 	head
 		meta(name='viewport', content='width=device-width, initial-scale=1')
 		title= title
-		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+		link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
 		link(rel='stylesheet', href='/stylesheets/index.css')
-		script(src='/javascripts/jquery-3.1.1.min.js')
-		script(src='/javascripts/main.js')
+		script(src='/bootstrap/js/bootstrap.min.js')
+		script(src='/js/main.js')
 	body
 		.container
+			h1.text-primary Encomiendas PumaCari
 			form#formAddUser.form-signin(name="checkLoginUser",method="post",action="/rest/checkLoginUser")
-				h2.form-signin-heading Iniciar Sesión
+				//h2.form-signin-heading.text-info Iniciar Sesión
 				label.sr-only(for='inputUsername') Nombre de Usuario
 				input#inputUsername.form-control(type='text', name="username" , placeholder='Nombre de Usuario', required='', autofocus='')
 				label.sr-only(for='inputPassword') Contraseña
@@ -19,4 +20,4 @@ html
 					label
 						input(type='checkbox', value='remember-me')
 						| Recordarme
-				button.btn.btn-lg.btn-primary.btn-block(type='submit',onclick='signin()') Iniciar Sesión
+				button.btn.btn-lg.btn-primary.btn-block(type='submit') Iniciar Sesión

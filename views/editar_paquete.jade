@@ -1,0 +1,30 @@
+extends layout
+
+block content
+            .col-sm-9
+                h1.
+                    Editar datos de Paquete
+                h2=message
+                form.form-horizontal(name="updatePackage",method="post",action="/rest/updatePackage")
+                    .form-group
+                        label.control-label.col-sm-2(for='id_entrega') Id Entrega:
+                        .col-sm-10
+                            input#id_entrega.form-control(type='text', name="id_entrega", value="#{entrega}")
+                    .form-group
+                        label.control-label.col-sm-2(for='id_paquete') Id Paquete:
+                        .col-sm-10
+                            input#id_paquete.form-control(type='text', name="id_paquete", value="#{paquete.id}")
+                    .form-group
+                        label.control-label.col-sm-2(for='descripcion') Descripcion:
+                        .col-sm-10
+                            input#descripcion.form-control(type='text', name="descripcion", value="#{paquete.descripcion}")
+                    .form-group
+                        label.control-label.col-sm-2(for='peso') Peso:
+                        .col-sm-10
+                            input#peso.form-control(step=any, type='double', name="peso", value="#{paquete.peso}")
+                    .form-group
+                        .col-sm-offset-2.col-sm-10
+                            button.btn.btn-primary(type='submit' style='margin-right:10px') Actualizar Datos
+                            a.btn.btn-danger(href='/entregas/#{entrega}/paquetes', role='button') Cancelar
+
+

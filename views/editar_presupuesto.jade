@@ -1,0 +1,70 @@
+extends layout
+
+block content
+            .col-sm-9
+                h1.
+                    Editar datos de Presupuesto
+                h2=message
+                form.form-horizontal(name="createBudget",method="post",action="/rest/updateBudget")
+                    .form-group
+                        label.control-label.col-sm-2(for='id') Id:
+                        .col-sm-10
+                            input#id.form-control(type='text', name="id", value="#{presupuesto.id}")
+                    .form-group
+                        label.control-label.col-sm-2(for='description') Descripción:
+                        .col-sm-10
+                            input#description.form-control(type='text', name="description", placeholder='Ingresa Descripcion', value="#{presupuesto.descripcion}")
+                    .form-group
+                        label.control-label.col-sm-2(for='partida') Lugar de Partida:
+                        .col-sm-10
+                            select#partida.selectpicker(data-live-search='true', name='partida')
+                                each city, i in cities
+                                    if(presupuesto.id_partida == city.id )
+                                        option(selected='',value="#{city.id}") #{city.nombre}
+                                    else
+                                        option(value="#{city.id}") #{city.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='destino') Lugar de Destino:
+                        .col-sm-10
+                            select#destino.selectpicker(data-live-search='true' name='destino')
+                                each city, i in cities
+                                    if(presupuesto.id_destino == city.id )
+                                        option(selected='',value="#{city.id}") #{city.nombre}
+                                    else
+                                        option(value="#{city.id}") #{city.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='direccion') Dirección:
+                        .col-sm-6
+                            input#direccion.form-control(type='text', name="direccion", placeholder='Ingresa una dirección', value="#{presupuesto.direccion}")
+                    .form-group
+                        label.control-label.col-sm-2(for='fragilidad') Fragilidad:
+                        .col-sm-10
+                            select#fragilidad.selectpicker(name='fragilidad')
+                                each fragilidad, i in fragilidades
+                                    if(presupuesto.id_fragilidad == fragilidad.id )
+                                        option(selected='',value="#{fragilidad.id}") #{fragilidad.nombre}
+                                    else
+                                        option(value="#{fragilidad.id}") #{fragilidad.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='prioridad') Prioridad:
+                        .col-sm-10
+                            select#prioridad.selectpicker(name='prioridad')
+                                each priority, i in prioridades
+                                    if(presupuesto.id_prioridad == priority.id )
+                                        option(selected='',value="#{priority.id}") #{priority.nombre}
+                                    else
+                                        option(value="#{priority.id}") #{priority.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='weight') Peso:
+                        .col-sm-10
+                            input#weight.form-control(type='number', step='any', name="weight", placeholder='Peso en Kg', value="#{presupuesto.peso}")
+                    .form-group
+                        label.control-label.col-sm-2(for='peso') Precio:
+                        .col-sm-10
+                            input#peso.form-control(type='number', step='any', name="price", placeholder='00.00', value="#{presupuesto.precio}")
+                    .form-group
+                        .col-sm-offset-2.col-sm-10
+                            button.btn.btn-primary(type='submit' style='margin-right:10px') Actualizar Datos
+                            a.btn.btn-danger(href='/presupuestos', role='button') Cancelar
+
+

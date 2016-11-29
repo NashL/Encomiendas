@@ -1,0 +1,34 @@
+extends layout
+
+block content
+            .col-sm-9
+                h1.
+                    Editar datos de Entrega
+                h2=message
+                form.form-horizontal(name="createBudget",method="post",action="/rest/updateDelivery")
+                    .form-group
+                        label.control-label.col-sm-2(for='id') Id:
+                        .col-sm-10
+                            input#id.form-control(type='text', name="id", value="#{entrega.id}")
+                    .form-group
+                        label.control-label.col-sm-2(for='id_presupuesto') #ID Presupuesto:
+                        .col-sm-10
+                            select#id_presupuesto.selectpicker(data-live-search='true', name='id_presupuesto', title="Elija un Presupuesto")
+                                each presupuesto, i in listaPresupuestos
+                                    if(presupuesto.id == entrega.id_presupuesto )
+                                        option(selected='',data-subtext="#{presupuesto.descripcion}", value="#{presupuesto.id}") #{presupuesto.id}
+                                    else
+                                        option(data-subtext="#{presupuesto.descripcion}", value="#{presupuesto.id}") #{presupuesto.id}
+                    .form-group
+                        label.control-label.col-sm-2(for='id_cliente') Cliente:
+                        .col-sm-10
+                            select#id_cliente.selectpicker(data-live-search='true', name='id_cliente', title="Elija un Cliente  ")
+                                each cliente, i in listaClientes
+                                    if(cliente.id == entrega.id_cliente )
+                                        option(selected='',data-subtext="#{cliente.id}",value="#{cliente.id}" ) #{cliente.nombres}
+                                    else
+                                        option(data-subtext="#{cliente.id}",value="#{cliente.id}" ) #{cliente.nombres}
+                    .form-group
+                        .col-sm-offset-2.col-sm-10
+                            button.btn.btn-primary(type='submit' style='margin-right:10px') Actualizar Datos
+                            a.btn.btn-danger(href='/entregas', role='button') Cancelar

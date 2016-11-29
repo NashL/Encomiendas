@@ -3,35 +3,31 @@ extends layout
 block content
             .col-sm-9
                 h1.
-                    Lista de Presupuestos
-                form#formAddBudget.form-group(name="createBudget",method="post",action="/presupuestos/crear")
+                    Lista de Paquetes por Entrega #{id_entrega}
+                form#formAddBudget.form-group(name="createPackage",method="get",action="/entregas/#{id_entrega}/paquetes/crear")
                     button.btn.btn-lg.btn-primary(type='submit')
                         i.glyphicon.glyphicon-plus
-                        |  Crear Presupuesto
+                        |  Crear Paquete
 
                 table.table.table-hover.table-bordered.table-responsive
                     thead
                         tr
                             th #ID
                             th Descripción
-                            th Fecha
-                            th Precio
                             th Peso
                             th Editar
                             th Eliminar
                     tbody
-                        each presupuesto, i in listapresupuesto
+                        each paquete, i in listaPaquetes
                             tr
-                                th(scope='row') #{presupuesto.id}
-                                td #{presupuesto.descripcion}
-                                td #{presupuesto.fecha}
-                                td #{presupuesto.precio}
-                                td #{presupuesto.peso}
+                                th(scope='row') #{paquete.id}
+                                td #{paquete.descripcion}
+                                td #{paquete.peso}
                                 td
-                                    form(method="get",action="/presupuestos/editar/#{presupuesto.id}")
+                                    form(method="put",action="/entregas/#{id_entrega}/paquetes/editar/#{paquete.id}")
                                         button.btn.btn-primary.btn-default.btn-xs(title="Editar")
                                             span.glyphicon.glyphicon-edit
                                 td
-                                    form(onsubmit="return confirm('Esta seguro que quiere eliminar este presupuesto?');", method="put",action="/presupuestos/delete/#{presupuesto.id}")
+                                    form(onsubmit="return confirm('Esta seguro que quiere eliminar este paquete?');", method="put",action="/entregas/#{id_entrega}/paquetes/delete/#{paquete.id}")
                                         button.btn.btn-danger.btn-default.btn-xs(title='Eliminar')
                                             span.glyphicon.glyphicon-trash

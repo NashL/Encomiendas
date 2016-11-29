@@ -1,0 +1,53 @@
+extends layout
+
+block content
+            .col-sm-9
+                h1.
+                    Creacion de presupuesto
+                h2=message
+                form.form-horizontal(name="createBudget",method="post",action="/rest/saveBudget")
+                    .form-group
+                        label.control-label.col-sm-2(for='description') Descripcion:
+                        .col-sm-6
+                            input#description.form-control(type='text', name="description", placeholder='Ingresa una Descripcion')
+                    .form-group
+                        label.control-label.col-sm-2(for='partida') Lugar de Partida:
+                        .col-sm-10
+                            select#partida.selectpicker(data-live-search='true', name='partida')
+                                each city, i in cities
+                                    option(value="#{city.id}") #{city.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='destino') Lugar de Destino:
+                        .col-sm-10
+                            select#destino.selectpicker(data-live-search='true' name='destino')
+                                each city, i in cities
+                                    option(value="#{city.id}") #{city.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='direccion') Dirección:
+                        .col-sm-6
+                            input#direccion.form-control(type='text', name="direccion", placeholder='Ingresa una dirección')
+                    .form-group
+                        label.control-label.col-sm-2(for='fragilidad') Fragilidad:
+                        .col-sm-10
+                            select#fragilidad.selectpicker(name='fragilidad')
+                                each fragilidad, i in fragilidades
+                                    option(value="#{fragilidad.id}") #{fragilidad.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='prioridad') Prioridad:
+                        .col-sm-10
+                            select#prioridad.selectpicker(name='prioridad')
+                                each prioridad, i in prioridades
+                                    option(value="#{prioridad.id}") #{prioridad.nombre}
+                    .form-group
+                        label.control-label.col-sm-2(for='weight') Peso:
+                        .col-sm-4
+                            input#weight.form-control(step=any, type='number', name="weight", placeholder='Peso en Kg')
+                    .form-group
+                        label.control-label.col-sm-2(for='peso') Precio:
+                        .col-sm-4
+                            input#peso.form-control(step=any,type='number', name="price", placeholder='00.00')
+
+                    .form-group
+                        .col-sm-offset-2.col-sm-3
+                            button.btn.btn-primary.btn-block(type='submit') Crear Presupuesto
+

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+            .col-sm-9
+                h1.
+                    Creacion de Paquete
+                h2=message
+                form.form-horizontal(name="createDelivery",method="post",action="/rest/savePackage")
+                    .form-group
+                        label.control-label.col-sm-2(for='entrega') #ID Entrega:
+                        .col-sm-10
+                            input#entrega.form-control(type='text', name="id_entrega", value="#{id_entrega}")
+                    .form-group
+                        label.control-label.col-sm-2(for='descripcion') Descripcion:
+                        .col-sm-10
+                            input#descripcion.form-control(type='text', name="descripcion", placeholder='Ingresa una Descripcion')
+                    .form-group
+                        label.control-label.col-sm-2(for='peso') Peso:
+                        .col-sm-10
+                            input#peso.form-control(step=any, type='double', name="peso", placeholder='Ingresa un Peso en Kg.')
+                    .form-group
+                        .col-sm-offset-2.col-sm-3
+                            button.btn.btn-primary.btn-block(type='submit') Crear Paquete
+

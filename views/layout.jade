@@ -1,11 +1,37 @@
 doctype html
 html
-	head
-		meta(name='viewport', content='width=device-width, initial-scale=1')
-		title= title
-		link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-		link(rel='stylesheet', href='/stylesheets/index.css')
-		script(src='/javascripts/jquery-3.1.1.min.js')
-		script(src='/javascripts/main.js')
-	body
-		block content
+    head
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title= "Encomiendas Pumacari"
+        script(src='/js/jquery-3.1.1.min.js')
+        link(rel='stylesheet', href='/stylesheets/index.css')
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+        script(src='/bootstrap/js/bootstrap.min.js')
+        script(src='/js/main.js')
+        link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js')
+    body
+        .container
+            .row
+                .col-sm-3
+                    .sidebar-nav
+                        .navbar.navbar-default(role='navigation')
+                            .navbar-header
+                                button.navbar-toggle(type='button', data-toggle='collapse', data-target='.sidebar-navbar-collapse')
+                                    span.sr-only Toggle navigation
+                                        span.icon-bar
+                                        span.icon-bar
+                                        span.icon-bar
+                                    span.visible-xs.navbar-brand Sidebar menu
+                                .navbar-collapse.collapse.sidebar-navbar-collapse
+                                    ul.nav.navbar-nav
+                                        li.active
+                                            a(href='/welcome') Bienvenido
+                                        li
+                                            a(href='/presupuestos') Presupuestos
+                                        li
+                                            a(href='/entregas') Entregas
+                                        li
+                                            a(href='/') Salir
+                block content

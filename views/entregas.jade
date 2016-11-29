@@ -1,0 +1,38 @@
+extends layout
+
+block content
+            .col-sm-9
+                h1.
+                    Lista de Entregas
+                form#formAddDelivery.form-group(name="createDelivery",method="post",action="/entregas/crear")
+                    button.btn.btn-lg.btn-primary(type='submit')
+                        i.glyphicon.glyphicon-plus
+                        |  Crear Entrega
+
+                table.table.table-hover.table-bordered.table-responsive
+                    thead
+                        tr
+                            th #ID
+                            th Nombre de Cliente
+                            th Descripción
+                            th Paquetes
+                            th Editar
+                            th Eliminar
+                    tbody
+                        each entrega, i in listaEntregas
+                            tr
+                                th(scope='row') #{entrega.id}
+                                td #{entrega.nombre_de_cliente}
+                                td #{entrega.descripcion}
+                                td.text-center
+                                    form(method="put",action="/entregas/#{entrega.id}/paquetes")
+                                        button.btn.btn-success.btn-default.btn-xs(title="Ver Paquetes")
+                                            span.glyphicon.glyphicon-eye-open
+                                td.text-center
+                                    form(method="put",action="/entregas/editar/#{entrega.id}")
+                                        button.btn.btn-primary.btn-default.btn-xs(title="Editar")
+                                            span.glyphicon.glyphicon-edit
+                                td.text-center
+                                    form(onsubmit="return confirm('Esta seguro que quiere eliminar este entrega?');", method="put",action="/entregas/delete/#{entrega.id}")
+                                        button.btn.btn-danger.btn-default.btn-xs(title='Eliminar')
+                                            span.glyphicon.glyphicon-trash
