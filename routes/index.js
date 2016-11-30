@@ -34,6 +34,7 @@ router.post('/presupuestos/crear', db.crear_presupuesto);
 router.post('/rest/saveBudget', db.save_budget);
 router.post('/rest/updateBudget', db.merge_budget);
 router.get('/presupuestos/editar/:id_presupuesto', db.actualizar_presupuesto);
+router.post('/presupuestos/filtrar', db.filtrar_presupuestos);
 
 router.get('/clientes', db.clientes);
 router.post('/clientes/crear', db.crear_cliente);

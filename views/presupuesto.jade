@@ -8,6 +8,13 @@ block content
                     button.btn.btn-lg.btn-primary(type='submit')
                         i.glyphicon.glyphicon-plus
                         |  Crear Presupuesto
+                .col-sm-4.col-md-4.pull-right
+                    form#formSearchTerm.navbar-form(name="searchTerm", method="post", action="/presupuestos/filtrar", role='search')
+                        .input-group
+                            input#srch-term.form-control(type='text', placeholder='Buscar', name='search_term', value='#{terminobusqueda}')
+                            .input-group-btn
+                                button.btn.btn-default(type='submit')
+                                    i.glyphicon.glyphicon-search
 
                 table.table.table-hover.table-bordered.table-responsive
                     thead

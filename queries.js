@@ -47,7 +47,8 @@ module.exports = {
     save_package: save_package,
     actualizar_paquete: actualizar_paquete,
     eliminar_paquete: eliminar_paquete,
-    mergePackage: mergePackage
+    mergePackage: mergePackage,
+    filtrar_presupuestos: filtrar_presupuestos
 };
 
 function getAllUsers(req, res, next) {
@@ -511,10 +512,24 @@ function load_presupuestos(){
 }
 
 function load_clientes(){
-
     db.func('clientes', 1)
         .then(function (data) {
             clientes_list=data;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function filtrar_presupuestos(req, res){
+    var term = "";
+    term = req.body.search_term;
+    db.func('filtrar_presupuestos', term)
+        .then(function (data) {
+            res.render("presupuesto",{
+                listapresupuesto: data,
+                terminobusqueda: term
+            });
         })
         .catch(function (error) {
             console.log(error);
